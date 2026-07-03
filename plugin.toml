@@ -1,0 +1,35 @@
+id           = "gonkdroid/alsaprofiles"
+name         = "ALSA Profiles"
+version      = "3.0.0"
+min_noctalia = "5.0.0"
+author       = "GonkDroid"
+license      = "MIT"
+icon         = "volume"
+description  = "Pavucontrol-style Configuration tab: list every sound card and switch its profile from a dropdown. Also add /audio for quick switching in the launcher"
+tags         = ["audio", "alsa", "pipewire"]
+
+# Background poller: shells out to pactl and publishes every card's profile info for the panel (and bar widget) to read.
+[[service]]
+id    = "poller"
+entry = "service.luau"
+
+# Bar widget: click opens the panel below.
+[[widget]]
+id    = "profile"
+entry = "widget.luau"
+
+# Floating panel: scrollable list of cards, one profile dropdown per card
+[[panel]]
+id        = "panel"
+entry     = "panel.luau"
+width     = 480
+height    = 520
+
+
+# Launcher provider: type /audio to fuzzy-search
+[[launcher_provider]]
+id                        = "profiles"
+entry                     = "launcher.luau"
+prefix                    = "/audio"
+glyph                     = "adjustments-horizontal"
+include_in_global_search  = "false"

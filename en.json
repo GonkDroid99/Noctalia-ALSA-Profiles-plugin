@@ -1,0 +1,4 @@
+{
+  "settings.card_name.label": "Sound card name (optional)",
+  "settings.card_name.description": "Exact 'Name:' value from `pactl list cards`. Leave blank to use the first card found."
+}
